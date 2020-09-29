@@ -1,0 +1,310 @@
+;;****************************************************************************
+;; File:        GRM32.net
+;; Description: GRM32 model file
+;; Author:      Agilent Technologies Japan, Ltd.
+;; Created:     2019.06.11 17:48:22
+;; Language:    ADSsim
+;; (C) Copyright 2005, Agilent Technologies Japan, all rights reserved.
+;;****************************************************************************
+
+define GRM32 ( _net1  _net2 )
+parameters PartNumber=0
+
+#uselib "ckt" , "DAC"
+
+DAC:DAC1  File="$muRataLibWeb_CIRCUIT_MODEL_DIR/GRM32.dat" Type="dscr" InterpMode="index_lookup" InterpDom="ri" ExtrapMode="interpMode" iVar1="INDEX" iVal1=PartNumber
+
+K01=file{DAC1, "K01"}
+L01=file{DAC1, "L01"}
+M01=file{DAC1, "M01"}
+K02=file{DAC1, "K02"}
+L02=file{DAC1, "L02"}
+M02=file{DAC1, "M02"}
+K03=file{DAC1, "K03"}
+L03=file{DAC1, "L03"}
+M03=file{DAC1, "M03"}
+K04=file{DAC1, "K04"}
+L04=file{DAC1, "L04"}
+M04=file{DAC1, "M04"}
+K05=file{DAC1, "K05"}
+L05=file{DAC1, "L05"}
+M05=file{DAC1, "M05"}
+K06=file{DAC1, "K06"}
+L06=file{DAC1, "L06"}
+M06=file{DAC1, "M06"}
+K07=file{DAC1, "K07"}
+L07=file{DAC1, "L07"}
+M07=file{DAC1, "M07"}
+K08=file{DAC1, "K08"}
+L08=file{DAC1, "L08"}
+M08=file{DAC1, "M08"}
+K09=file{DAC1, "K09"}
+L09=file{DAC1, "L09"}
+M09=file{DAC1, "M09"}
+K10=file{DAC1, "K10"}
+L10=file{DAC1, "L10"}
+M10=file{DAC1, "M10"}
+K11=file{DAC1, "K11"}
+L11=file{DAC1, "L11"}
+M11=file{DAC1, "M11"}
+K12=file{DAC1, "K12"}
+L12=file{DAC1, "L12"}
+M12=file{DAC1, "M12"}
+K13=file{DAC1, "K13"}
+L13=file{DAC1, "L13"}
+M13=file{DAC1, "M13"}
+K14=file{DAC1, "K14"}
+L14=file{DAC1, "L14"}
+M14=file{DAC1, "M14"}
+K15=file{DAC1, "K15"}
+L15=file{DAC1, "L15"}
+M15=file{DAC1, "M15"}
+K16=file{DAC1, "K16"}
+L16=file{DAC1, "L16"}
+M16=file{DAC1, "M16"}
+K17=file{DAC1, "K17"}
+L17=file{DAC1, "L17"}
+M17=file{DAC1, "M17"}
+K18=file{DAC1, "K18"}
+L18=file{DAC1, "L18"}
+M18=file{DAC1, "M18"}
+
+jw=j*omega
+HUGE_OPEN_R=1E10
+HUGE_OPEN_L=1E10
+TINY_OPEN_C=1E-30
+TINY_SHORT_R=1E-10
+TINY_SHORT_L=1E-30
+HUGE_SHORT_C=1E10
+
+jwC04=if (K04<=TINY_OPEN_C) then 0 else jw*K04 endif
+jwC05=if (K05<=TINY_OPEN_C) then 0 else jw*K05 endif
+jwC06=if (K06<=TINY_OPEN_C) then 0 else jw*K06 endif
+jwC07=if (K07<=TINY_OPEN_C) then 0 else jw*K07 endif
+jwC08=if (K08<=TINY_OPEN_C) then 0 else jw*K08 endif
+jwC09=if (K09<=TINY_OPEN_C) then 0 else jw*K09 endif
+jwC10=if (K10<=TINY_OPEN_C) then 0 else jw*K10 endif
+jwC11=if (K11<=TINY_OPEN_C) then 0 else jw*K11 endif
+jwC12=if (K12<=TINY_OPEN_C) then 0 else jw*K12 endif
+jwC13=if (K13<=TINY_OPEN_C) then 0 else jw*K13 endif
+jwC14=if (K14<=TINY_OPEN_C) then 0 else jw*K14 endif
+jwC15=if (K15<=TINY_OPEN_C) then 0 else jw*K15 endif
+jwC16=if (K16<=TINY_OPEN_C) then 0 else jw*K16 endif
+jwC17=if (K17<=TINY_OPEN_C) then 0 else jw*K17 endif
+jwC18=if (K18<=TINY_OPEN_C) then 0 else jw*K18 endif
+
+Inv_jwL04=if (freq==0 or L04==0 or L04>=HUGE_OPEN_L) then 0 else 1/(jw*L04) endif
+Inv_jwL05=if (freq==0 or L05==0 or L05>=HUGE_OPEN_L) then 0 else 1/(jw*L05) endif
+Inv_jwL06=if (freq==0 or L06==0 or L06>=HUGE_OPEN_L) then 0 else 1/(jw*L06) endif
+Inv_jwL07=if (freq==0 or L07==0 or L07>=HUGE_OPEN_L) then 0 else 1/(jw*L07) endif
+Inv_jwL08=if (freq==0 or L08==0 or L08>=HUGE_OPEN_L) then 0 else 1/(jw*L08) endif
+Inv_jwL09=if (freq==0 or L09==0 or L09>=HUGE_OPEN_L) then 0 else 1/(jw*L09) endif
+Inv_jwL10=if (freq==0 or L10==0 or L10>=HUGE_OPEN_L) then 0 else 1/(jw*L10) endif
+Inv_jwL11=if (freq==0 or L11==0 or L11>=HUGE_OPEN_L) then 0 else 1/(jw*L11) endif
+Inv_jwL12=if (freq==0 or L12==0 or L12>=HUGE_OPEN_L) then 0 else 1/(jw*L12) endif
+Inv_jwL13=if (freq==0 or L13==0 or L13>=HUGE_OPEN_L) then 0 else 1/(jw*L13) endif
+Inv_jwL14=if (freq==0 or L14==0 or L14>=HUGE_OPEN_L) then 0 else 1/(jw*L14) endif
+Inv_jwL15=if (freq==0 or L15==0 or L15>=HUGE_OPEN_L) then 0 else 1/(jw*L15) endif
+Inv_jwL16=if (freq==0 or L16==0 or L16>=HUGE_OPEN_L) then 0 else 1/(jw*L16) endif
+Inv_jwL17=if (freq==0 or L17==0 or L17>=HUGE_OPEN_L) then 0 else 1/(jw*L17) endif
+Inv_jwL18=if (freq==0 or L18==0 or L18>=HUGE_OPEN_L) then 0 else 1/(jw*L18) endif
+
+G04=if (M04==0 or M04>=HUGE_OPEN_R) then 0 else 1/M04 endif
+G05=if (M05==0 or M05>=HUGE_OPEN_R) then 0 else 1/M05 endif
+G06=if (M06==0 or M06>=HUGE_OPEN_R) then 0 else 1/M06 endif
+G07=if (M07==0 or M07>=HUGE_OPEN_R) then 0 else 1/M07 endif
+G08=if (M08==0 or M08>=HUGE_OPEN_R) then 0 else 1/M08 endif
+G09=if (M09==0 or M09>=HUGE_OPEN_R) then 0 else 1/M09 endif
+G10=if (M10==0 or M10>=HUGE_OPEN_R) then 0 else 1/M10 endif
+G11=if (M11==0 or M11>=HUGE_OPEN_R) then 0 else 1/M11 endif
+G12=if (M12==0 or M12>=HUGE_OPEN_R) then 0 else 1/M12 endif
+G13=if (M13==0 or M13>=HUGE_OPEN_R) then 0 else 1/M13 endif
+G14=if (M14==0 or M14>=HUGE_OPEN_R) then 0 else 1/M14 endif
+G15=if (M15==0 or M15>=HUGE_OPEN_R) then 0 else 1/M15 endif
+G16=if (M16==0 or M16>=HUGE_OPEN_R) then 0 else 1/M16 endif
+G17=if (M17==0 or M17>=HUGE_OPEN_R) then 0 else 1/M17 endif
+G18=if (M18==0 or M18>=HUGE_OPEN_R) then 0 else 1/M18 endif
+
+Y04=if (K04==0 and L04==0 and M04==0) or (K04>=HUGE_SHORT_C and L04<=TINY_SHORT_L and M04<=TINY_SHORT_R) then 0 else jwC04+Inv_jwL04+G04 endif
+Y05=if (K05==0 and L05==0 and M05==0) or (K05>=HUGE_SHORT_C and L05<=TINY_SHORT_L and M05<=TINY_SHORT_R) then 0 else jwC05+Inv_jwL05+G05 endif
+Y06=if (K06==0 and L06==0 and M06==0) or (K06>=HUGE_SHORT_C and L06<=TINY_SHORT_L and M06<=TINY_SHORT_R) then 0 else jwC06+Inv_jwL06+G06 endif
+Y07=if (K07==0 and L07==0 and M07==0) or (K07>=HUGE_SHORT_C and L07<=TINY_SHORT_L and M07<=TINY_SHORT_R) then 0 else jwC07+Inv_jwL07+G07 endif
+Y08=if (K08==0 and L08==0 and M08==0) or (K08>=HUGE_SHORT_C and L08<=TINY_SHORT_L and M08<=TINY_SHORT_R) then 0 else jwC08+Inv_jwL08+G08 endif
+Y09=if (K09==0 and L09==0 and M09==0) or (K09>=HUGE_SHORT_C and L09<=TINY_SHORT_L and M09<=TINY_SHORT_R) then 0 else jwC09+Inv_jwL09+G09 endif
+Y10=if (K10==0 and L10==0 and M10==0) or (K10>=HUGE_SHORT_C and L10<=TINY_SHORT_L and M10<=TINY_SHORT_R) then 0 else jwC10+Inv_jwL10+G10 endif
+Y11=if (K11==0 and L11==0 and M11==0) or (K11>=HUGE_SHORT_C and L11<=TINY_SHORT_L and M11<=TINY_SHORT_R) then 0 else jwC11+Inv_jwL11+G11 endif
+Y12=if (K12==0 and L12==0 and M12==0) or (K12>=HUGE_SHORT_C and L12<=TINY_SHORT_L and M12<=TINY_SHORT_R) then 0 else jwC12+Inv_jwL12+G12 endif
+Y13=if (K13==0 and L13==0 and M13==0) or (K13>=HUGE_SHORT_C and L13<=TINY_SHORT_L and M13<=TINY_SHORT_R) then 0 else jwC13+Inv_jwL13+G13 endif
+Y14=if (K14==0 and L14==0 and M14==0) or (K14>=HUGE_SHORT_C and L14<=TINY_SHORT_L and M14<=TINY_SHORT_R) then 0 else jwC14+Inv_jwL14+G14 endif
+Y15=if (K15==0 and L15==0 and M15==0) or (K15>=HUGE_SHORT_C and L15<=TINY_SHORT_L and M15<=TINY_SHORT_R) then 0 else jwC15+Inv_jwL15+G15 endif
+Y16=if (K16==0 and L16==0 and M16==0) or (K16>=HUGE_SHORT_C and L16<=TINY_SHORT_L and M16<=TINY_SHORT_R) then 0 else jwC16+Inv_jwL16+G16 endif
+Y17=if (K17==0 and L17==0 and M17==0) or (K17>=HUGE_SHORT_C and L17<=TINY_SHORT_L and M17<=TINY_SHORT_R) then 0 else jwC17+Inv_jwL17+G17 endif
+Y18=if (K18==0 and L18==0 and M18==0) or (K18>=HUGE_SHORT_C and L18<=TINY_SHORT_L and M18<=TINY_SHORT_R) then 0 else jwC18+Inv_jwL18+G18 endif
+
+Z01=if (K01==0 and M01==0) or (K01>=HUGE_SHORT_C and M01<=TINY_SHORT_R) then 0 else M01/(jw*K01*M01+1) endif
+Z02=if (L02<=TINY_SHORT_L) then 0 else jw*L02 endif
+Z03=if (M03<=TINY_SHORT_R) then 0 else M03 endif
+
+Z04=if (Y04==0) then 0 else 1/Y04 endif
+Z05=if (Y05==0) then 0 else 1/Y05 endif
+Z06=if (Y06==0) then 0 else 1/Y06 endif
+Z07=if (Y07==0) then 0 else 1/Y07 endif
+Z08=if (Y08==0) then 0 else 1/Y08 endif
+Z09=if (Y09==0) then 0 else 1/Y09 endif
+Z10=if (Y10==0) then 0 else 1/Y10 endif
+Z11=if (Y11==0) then 0 else 1/Y11 endif
+Z12=if (Y12==0) then 0 else 1/Y12 endif
+Z13=if (Y13==0) then 0 else 1/Y13 endif
+Z14=if (Y14==0) then 0 else 1/Y14 endif
+Z15=if (Y15==0) then 0 else 1/Y15 endif
+Z16=if (Y16==0) then 0 else 1/Y16 endif
+Z17=if (Y17==0) then 0 else 1/Y17 endif
+Z18=if (Y18==0) then 0 else 1/Y18 endif
+
+Z_Port:Z1P01 _net1 _net2 Z[1,1]=Z01+Z02+Z03+Z04+Z05+Z06+Z07+Z08+Z09+Z10+Z11+Z12+Z13+Z14+Z15+Z16+Z17+Z18
+
+end GRM32
+
+;;model information (PartNumber:partName)
+;0 : GRM32A7U3D820JW31
+;1 : GRM32A7U3D101JW31
+;2 : GRM32A7U3D121JW31
+;3 : GRM32A7U3D151JW31
+;4 : GRM32B7U3D181JW31
+;5 : GRM32B7U3D221JW31
+;6 : GRM32A7U2H122JW31
+;7 : GRM32A7U2J122JW31
+;8 : GRM32B7U3A122JW31
+;9 : GRM32A7U2H152JW31
+;10 : GRM32A7U2J152JW31
+;11 : GRM32Q7U3A152JW31
+;12 : GRM32A7U2H182JW31
+;13 : GRM32A7U2J182JW31
+;14 : GRM32D7U3A182JW31
+;15 : GRM32A7U2H222JW31
+;16 : GRM32A7U2J222JW31
+;17 : GRM32D7U3A222JW31
+;18 : GRM32B7U2H562JW31
+;19 : GRM32B7U2J562JW31
+;20 : GRM32Q7U2H682JW31
+;21 : GRM32Q7U2J682JW31
+;22 : GRM32QR73A682KW01
+;23 : GRM32D7U2H822JW31
+;24 : GRM32D7U2J822JW31
+;25 : GRM32D7U2H103JW31
+;26 : GRM32D7U2J103JW31
+;27 : GRM32QR73A103KW01
+;28 : GRM32E7U2J123JW32
+;29 : GRM32E7U2J153JW32
+;30 : GRM32DR73A153KW01
+;31 : GRM32QR72J223KW01
+;32 : GRM32DR73A223KW01
+;33 : GRM32DR72J333KW01
+;34 : GRM32DR72J473KW01
+;35 : GRM32QR72D683KW01
+;36 : GRM32QR72E683KW01
+;37 : GRM32QR72H683KW10
+;38 : GRM32MR71H104KA01
+;39 : GRM32NR72A104KA01
+;40 : GRM32DR72D104KW01
+;41 : GRM32DR72E104KW01
+;42 : GRM32DR72H104KW10
+;43 : GRM32NR71H154KA01
+;44 : GRM32QR72D154KW01
+;45 : GRM32QR72E154KW01
+;46 : GRM32DR72D224KW01
+;47 : GRM32DR72E224KW01
+;48 : GRM32NR71H684KA01
+;49 : GRM32CR72A684KA01
+;50 : GRM32RR71H105KA01
+;51 : GRM32CR72A105KA35
+;52 : GRM32CR72A105MA35
+;53 : GRM32MR71C225KA01
+;54 : GRM32RR71E225KA01
+;55 : GRM32ER72A225KA35
+;56 : GRM32ER72A225MA35
+;57 : GRM32DC72A475KE01
+;58 : GRM32DC72A475ME01
+;59 : GRM32RR61C475KA01
+;60 : GRM32RR61E475KA12
+;61 : GRM32RR71C475KA01
+;62 : GRM32DR71E475KA61
+;63 : GRM32ER71H475KA88
+;64 : GRM32ER71K475KE14
+;65 : GRM32ER71K475ME14
+;66 : GRM32DC81E106KA12
+;67 : GRM32ER61A106KA01
+;68 : GRM32AR61C106KAB7
+;69 : GRM32DR61C106KA01
+;70 : GRM32DR61E106KA12
+;71 : GRM32DR61E106MA12
+;72 : GRM32ER61H106KA12
+;73 : GRM32ER61H106MA12
+;74 : GRM32ER6YA106KA12
+;75 : GRM32ER6YA106MA12
+;76 : GRM32DR71A106KA01
+;77 : GRM32DR71C106KA01
+;78 : GRM32DR71E106KA12
+;79 : GRM32ER71J106KA12
+;80 : GRM32ER71J106MA12
+;81 : GRM32ER7YA106KA12
+;82 : GRM32ER7YA106MA12
+;83 : GRM32NC81A226ME19
+;84 : GRM32NC81C226KE15
+;85 : GRM32NC81C226ME15
+;86 : GRM32EC81E226KE15
+;87 : GRM32EC81E226ME15
+;88 : GRM32ND70J226ME19
+;89 : GRM32ND71A226KE15
+;90 : GRM32ND71A226ME15
+;91 : GRM32DR60J226MA01
+;92 : GRM32NR61A226KE19
+;93 : GRM32NR61A226ME19
+;94 : GRM32ER61C226ME20
+;95 : GRM32ER61E226KE15
+;96 : GRM32ER61E226ME15
+;97 : GRM32ER71A226ME20
+;98 : GRM32ER71C226KEA8
+;99 : GRM32ER71C226MEA8
+;100 : GRM32ER71E226ME15
+;101 : GRM32DR60J336ME19
+;102 : GRM32EC80J476KE64
+;103 : GRM32EC80J476ME64
+;104 : GRM32EC81A476KE19
+;105 : GRM32EC81A476ME19
+;106 : GRM32EC81C476KE15
+;107 : GRM32EC81C476ME15
+;108 : GRM32ED70J476KE20
+;109 : GRM32ED70J476ME20
+;110 : GRM32ED71A476KE15
+;111 : GRM32ED71A476ME15
+;112 : GRM32EE70J476KE20
+;113 : GRM32EE70J476ME20
+;114 : GRM32ER60J476KE64
+;115 : GRM32ER60J476ME20
+;116 : GRM32ER60J476ME64
+;117 : GRM32ER61A476KE20
+;118 : GRM32ER61A476ME20
+;119 : GRM32ER61C476KE15
+;120 : GRM32ER61C476ME15
+;121 : GRM32ER70J476KE20
+;122 : GRM32ER70J476ME20
+;123 : GRM32ER71A476KE15
+;124 : GRM32ER71A476ME15
+;125 : GRM32EC70G107ME15
+;126 : GRM32EC70J107ME15
+;127 : GRM32EC80G107KE20
+;128 : GRM32EC80G107ME20
+;129 : GRM32EC80J107ME20
+;130 : GRM32EE70G107ME19
+;131 : GRM32EE70J107ME15
+;132 : GRM32ER60J107ME20
+;133 : GRM32ER61A107ME20
+;134 : GRM32EC80E227ME05
+;135 : GRM32EC80G227ME05
+;136 : GRM32ER60G227ME05
+;137 : GRM32ER60J227ME05
+;138 : GRM32EC80E337ME05
+;139 : GRM32ER60E337ME05
+;140 : GRM32ER60G337ME05
+

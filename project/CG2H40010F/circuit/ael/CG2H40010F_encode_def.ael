@@ -1,0 +1,18 @@
+decl dir_delim = "/";
+decl CG2H40010F_bitmap_path =
+        strcat(CG2H40010F_PATH, dir_delim,
+        "circuit", dir_delim, 
+        "bitmaps", dir_delim, 
+        on_PC?"pc":"unix", dir_delim);
+
+de_define_palette_group( SCHEM_WIN, "analogRF_net",
+        "CG2H40010F", "CG2H40010F", -2,
+        "Packaged_lib_CG2H40010F_schematic", "Encoded Version of Part - Packaged_lib_CG2H40010F_schematic",
+                strcat( CG2H40010F_bitmap_path, "Packaged_lib_CG2H40010F_schematic")
+        );
+de_define_palette_group( SCHEM_WIN, "sigproc_net",
+        "CG2H40010F", "CG2H40010F", -2,
+         "Packaged_lib_CG2H40010F_schematic", "Encoded Version of Part - Packaged_lib_CG2H40010F_schematic", 
+                strcat( CG2H40010F_bitmap_path, "Packaged_lib_CG2H40010F_schematic")
+        );
+

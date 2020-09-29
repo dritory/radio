@@ -1,0 +1,7 @@
+INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
+INCLUDE $HPEESOF_DIR/oalibs/dsp.defs
+DEFINE project_lib project_lib
+ASSIGN project_lib libMode shared
+INCLUDE Johanson_lib_v1.0/lib.defs
+INCLUDE CG2H40010F/lib.defs
+INCLUDE Murata/lib.defs

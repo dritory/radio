@@ -1,0 +1,5 @@
+# Library Defs for CG2H40010F design kit
+DEFINE CG2H40010F_tech ./CG2H40010F_tech
+ASSIGN CG2H40010F_tech libMode readOnly
+DEFINE CG2H40010F ./CG2H40010F
+ASSIGN CG2H40010F libMode readOnly

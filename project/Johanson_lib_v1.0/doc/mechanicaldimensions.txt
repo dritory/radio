@@ -1,0 +1,3 @@
+
+# The references to mechanical dimensions of the component pads for R14 and L14 series can be found here
+https://www.johansontechnology.com/pcb-pad-layout-recommendations

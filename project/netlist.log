@@ -1,0 +1,78 @@
+; Top Design: "project_lib:FET_SP_NF_Match_Circ:schematic"
+; Netlisted using Hierarchy Policy: "Standard"
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="project_lib:FET_SP_NF_Match_Circ:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+
+global VDS = 0 V
+global VGS = 0 V
+S_Param:SP1 CalcS=yes GroupDelayAperture=1e-4 FreqConversion=no FreqConversionPort=1 StatusLevel=2 CalcNoise=no SortNoise=0 BandwidthForNoise=1.0 Hz Freq=2.4 GHz DevOpPtLevel=0 \
+OutputPlan="SP1_Output" 
+
+OutputPlan:SP1_Output \
+      Type="Output" \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      EquationName[1]="Z0" \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2
+
+#load "python","LinearCollapse"
+Component Module="LinearCollapse" Type="ModelExtractor" NetworkRepresentation=2
+
+Options:Options1 Temp=16.85 Tnom=25 TopologyCheck=yes ForceS_Params=yes V_RelTol=1e-6  \
+I_RelTol=1e-6 GiveAllWarnings=yes MaxWarnings=10 ForceM_Params=yes DC_ReadInitialGuess=no  \
+DC_WriteFinalSolution=no TopologyCheckMessages=no GPU=no doDeltaAC=yes ReduceSPort=no  \
+ReduceSPortRatio=0.5 WarnSOA=yes MaxWarnSOA=5 Census=no MinNodalR=1e-2 Ohm  \
+LargeCapThreshold=1e-3 F EnableAssertChecks=no EnableSpareRemoval=yes 
+
+DC:DC1 StatusLevel=2 DevOpPtLevel=0 UseFiniteDiff=no PrintOpPoint=no Restart=1 \
+SweepVar="VDS" SweepPlan="DC1_stim" OutputPlan="DC1_Output" 
+
+SweepPlan: DC1_stim Start=VDSmin Stop=VDSmax Step=VDSstep 
+
+OutputPlan:DC1_Output \
+      Type="Output" \
+      UseNodeNestLevel=yes \
+      NodeNestLevel=2 \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2 \
+      UseDeviceCurrentNestLevel=no \
+      DeviceCurrentNestLevel=0 \
+      DeviceCurrentDeviceType="All" \
+      DeviceCurrentSymSyntax=yes \
+      UseCurrentNestLevel=yes \
+      CurrentNestLevel=999 \
+      UseDeviceVoltageNestLevel=no \
+      DeviceVoltageNestLevel=0 \
+      DeviceVoltageDeviceType="All"
+
+V_Source:SRC3  N__1 0 Type="V_DC" Vdc=VGS V SaveCurrent=1 
+ParamSweep:Sweep2 SimInstanceName[1]="SP1" StatusLevel=2 SweepVar="VDS" SweepPlan="Sweep2_stim" 
+
+SweepPlan: Sweep2_stim Start=VDSmin Stop=VDSmax Step=VDSstep 
+
+ParamSweep:Sweep1 SimInstanceName[1]="DC1" SimInstanceName[2]="Sweep2" StatusLevel=2 SweepVar="VGS" SweepPlan="Sweep1_stim" 
+
+SweepPlan: Sweep1_stim Start=VGSmin Stop=VGSmax Step=VGSstep 
+
+Port:Term1  N__2 0 Num=1 Z=Z0 Noise=yes 
+Port:Term2  N__5 0 Num=2 Z=Z0 Noise=yes 
+V_Source:SRC1  N__3 0 Type="V_DC" Vdc=VDS SaveCurrent=1 
+Short:IDS  N__4 N__14 Mode=0 SaveCurrent=yes 
+
+Z0=50
+VGSmin=-3
+VGSmax=-2
+VGSstep=0.05
+VDSmin=0.25 V
+VDSmax=28
+VDSstep=0.1 V
+#uselib "CG2H40010F" , "Packaged_lib_CG2H40010F_schematic"
+"Packaged_lib_CG2H40010F_schematic":X1  N__13 N__14 0 RTH=8.0 TBASE=25 VDN=28 
+Short:DC_Feed1  N__3 N__4 Mode=-1 
+Short:DC_Feed2  N__9 N__1 Mode=-1 
+Short:DC_Block1  N__2 N__9 Mode=1 
+Short:DC_Block2  N__14 N__5 Mode=1 
+R:R1  N__9 N__13 R=2 Ohm Noise=yes 

@@ -1,0 +1,28 @@
+// Design Kit Component Conversion Script
+
+de_new_library("CG2H40010F", "E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F");
+
+de_add_library_to_def_file("CG2H40010F", "./CG2H40010F", READ_ONLY_LIB_MODE, "E:/Model/Product/packaged_kit/CG2H40010F/lib.defs");
+de_add_library_to_def_file("CG2H40010F", "./CG2H40010F", SHARED_LIB_MODE, "E:/Model/Product/packaged_kit/CG2H40010F/for_editing_pdk.defs");
+
+// Create and populate configuration file
+de_create_library_config_file("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "DESIGN_KIT_NAME", "CG2H40010F");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "DESIGN_KIT_ROOT", "../");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "BOOT_AEL", "../de/ael/boot");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "VERSION", "1");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "ADSLIBCONFIG_DIRECTORY", "../circuit/config");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "BIN_DIRECTORY", "..//bin/$SIMARCH$COMPILER_VER");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "DOC_DIRECTORY", "../doc");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "DRC_DIRECTORY", "../drc/rules");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "EXPRESSIONS_DIRECTORY", "../expressions/ael");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "TEMPLATES_DIRECTORY", "../circuit/templates/library");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "DDS_TEMPLATES_DIRECTORY", "../circuit/templates");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "NETLIST_EXPORTER_DIRECTORY", "../netlist_exp");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "VERILOGA_DIRECTORY", "../veriloga");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "INPUT_DATA_PATH", "../circuit/data;../circuit/models");
+de_set_library_config_file_var("E:/Model/Product/packaged_kit/CG2H40010F/CG2H40010F", "LIB_BROWSER_CTL", "../circuit/records/CG2H40010F.ctl");
+// Convert library components
+convert_item_to_oa("Packaged_lib_CG2H40010F_schematic", "CG2H40010F", "Packaged_lib_CG2H40010F_schematic", TRUE, TRUE, "CG2H40010F");
+
+de_close_all_libraries_and_lib_def_files();

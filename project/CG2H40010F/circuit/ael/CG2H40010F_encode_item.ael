@@ -1,0 +1,21 @@
+set_design_type(1);
+create_item("Packaged_lib_CG2H40010F_schematic",		//Name
+		"CG2H40010F - encoded",		//Label
+		"X",		//Prefix
+		ITEM_NOT_ALL_PARM,		//Attribute
+		-1,		//Priority
+		"",		//iconName
+		"Component Parameters",		//dialogName
+		"",		//dialogData
+		"#uselib \"CG2H40010F\" , \"%d\"\n\"%d\":%t %# %44?0%:%31?%C%:_net%c%;%;%e %r%b%8?%29?%:%30?%p %:%k%?[%1i]%;=%p %;%;%e%e",		//netlistFormat
+		"Packaged_lib_CG2H40010F_schematic",		//netlistData
+		ComponentAnnotFmt,		//displayFormat
+		"",		//symbolName
+		0,		//artWorkType
+		"",		//artworkData
+		ITEM_PRIMITIVE_EX		//extraAttrib
+,
+		create_parm("RTH","RTH",67584,"StdFormSet","-1",prm("StdForm","8.0")),
+		create_parm("TBASE","TBASE",67584,"StdFormSet","-1",prm("StdForm","25")),
+		create_parm("VDN","VDN",67584,"StdFormSet","-1",prm("StdForm","28")));
+

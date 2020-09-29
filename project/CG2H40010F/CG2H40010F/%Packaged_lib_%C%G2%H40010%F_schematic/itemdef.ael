@@ -1,0 +1,4 @@
+create_item("Packaged_lib_CG2H40010F_schematic","CG2H40010F - encoded","X",1073741824,-1,NULL,"Component Parameters",NULL,"#uselib \"CG2H40010F\" , \"%d\"\n\"%d\":%t %# %44?0%:%31?%C%:_net%c%;%;%e %r%b%8?%29?%:%30?%p %:%k%?[%1i]%;=%p %;%;%e%e","Packaged_lib_CG2H40010F_schematic","%t%b%r%38?%:\n%30?%s%:%k%?[%1i]%;=%s%;%;%e%e%;","",0,NULL,32,
+create_parm("RTH","RTH",67584,"StdFormSet",-1,prm("StdForm","8.0")),
+create_parm("TBASE","TBASE",67584,"StdFormSet",-1,prm("StdForm","25")),
+create_parm("VDN","VDN",67584,"StdFormSet",-1,prm("StdForm","28")));

@@ -1,0 +1,187 @@
+;;****************************************************************************
+;; File:        KR355.net
+;; Description: KR355 model file
+;; Author:      Agilent Technologies Japan, Ltd.
+;; Created:     2019.06.11 17:48:22
+;; Language:    ADSsim
+;; (C) Copyright 2005, Agilent Technologies Japan, all rights reserved.
+;;****************************************************************************
+
+define KR355 ( _net1  _net2 )
+parameters PartNumber=0
+
+#uselib "ckt" , "DAC"
+
+DAC:DAC1  File="$muRataLibWeb_CIRCUIT_MODEL_DIR/KR355.dat" Type="dscr" InterpMode="index_lookup" InterpDom="ri" ExtrapMode="interpMode" iVar1="INDEX" iVal1=PartNumber
+
+K01=file{DAC1, "K01"}
+L01=file{DAC1, "L01"}
+M01=file{DAC1, "M01"}
+K02=file{DAC1, "K02"}
+L02=file{DAC1, "L02"}
+M02=file{DAC1, "M02"}
+K03=file{DAC1, "K03"}
+L03=file{DAC1, "L03"}
+M03=file{DAC1, "M03"}
+K04=file{DAC1, "K04"}
+L04=file{DAC1, "L04"}
+M04=file{DAC1, "M04"}
+K05=file{DAC1, "K05"}
+L05=file{DAC1, "L05"}
+M05=file{DAC1, "M05"}
+K06=file{DAC1, "K06"}
+L06=file{DAC1, "L06"}
+M06=file{DAC1, "M06"}
+K07=file{DAC1, "K07"}
+L07=file{DAC1, "L07"}
+M07=file{DAC1, "M07"}
+K08=file{DAC1, "K08"}
+L08=file{DAC1, "L08"}
+M08=file{DAC1, "M08"}
+K09=file{DAC1, "K09"}
+L09=file{DAC1, "L09"}
+M09=file{DAC1, "M09"}
+K10=file{DAC1, "K10"}
+L10=file{DAC1, "L10"}
+M10=file{DAC1, "M10"}
+K11=file{DAC1, "K11"}
+L11=file{DAC1, "L11"}
+M11=file{DAC1, "M11"}
+K12=file{DAC1, "K12"}
+L12=file{DAC1, "L12"}
+M12=file{DAC1, "M12"}
+K13=file{DAC1, "K13"}
+L13=file{DAC1, "L13"}
+M13=file{DAC1, "M13"}
+K14=file{DAC1, "K14"}
+L14=file{DAC1, "L14"}
+M14=file{DAC1, "M14"}
+K15=file{DAC1, "K15"}
+L15=file{DAC1, "L15"}
+M15=file{DAC1, "M15"}
+K16=file{DAC1, "K16"}
+L16=file{DAC1, "L16"}
+M16=file{DAC1, "M16"}
+K17=file{DAC1, "K17"}
+L17=file{DAC1, "L17"}
+M17=file{DAC1, "M17"}
+K18=file{DAC1, "K18"}
+L18=file{DAC1, "L18"}
+M18=file{DAC1, "M18"}
+
+jw=j*omega
+HUGE_OPEN_R=1E10
+HUGE_OPEN_L=1E10
+TINY_OPEN_C=1E-30
+TINY_SHORT_R=1E-10
+TINY_SHORT_L=1E-30
+HUGE_SHORT_C=1E10
+
+jwC04=if (K04<=TINY_OPEN_C) then 0 else jw*K04 endif
+jwC05=if (K05<=TINY_OPEN_C) then 0 else jw*K05 endif
+jwC06=if (K06<=TINY_OPEN_C) then 0 else jw*K06 endif
+jwC07=if (K07<=TINY_OPEN_C) then 0 else jw*K07 endif
+jwC08=if (K08<=TINY_OPEN_C) then 0 else jw*K08 endif
+jwC09=if (K09<=TINY_OPEN_C) then 0 else jw*K09 endif
+jwC10=if (K10<=TINY_OPEN_C) then 0 else jw*K10 endif
+jwC11=if (K11<=TINY_OPEN_C) then 0 else jw*K11 endif
+jwC12=if (K12<=TINY_OPEN_C) then 0 else jw*K12 endif
+jwC13=if (K13<=TINY_OPEN_C) then 0 else jw*K13 endif
+jwC14=if (K14<=TINY_OPEN_C) then 0 else jw*K14 endif
+jwC15=if (K15<=TINY_OPEN_C) then 0 else jw*K15 endif
+jwC16=if (K16<=TINY_OPEN_C) then 0 else jw*K16 endif
+jwC17=if (K17<=TINY_OPEN_C) then 0 else jw*K17 endif
+jwC18=if (K18<=TINY_OPEN_C) then 0 else jw*K18 endif
+
+Inv_jwL04=if (freq==0 or L04==0 or L04>=HUGE_OPEN_L) then 0 else 1/(jw*L04) endif
+Inv_jwL05=if (freq==0 or L05==0 or L05>=HUGE_OPEN_L) then 0 else 1/(jw*L05) endif
+Inv_jwL06=if (freq==0 or L06==0 or L06>=HUGE_OPEN_L) then 0 else 1/(jw*L06) endif
+Inv_jwL07=if (freq==0 or L07==0 or L07>=HUGE_OPEN_L) then 0 else 1/(jw*L07) endif
+Inv_jwL08=if (freq==0 or L08==0 or L08>=HUGE_OPEN_L) then 0 else 1/(jw*L08) endif
+Inv_jwL09=if (freq==0 or L09==0 or L09>=HUGE_OPEN_L) then 0 else 1/(jw*L09) endif
+Inv_jwL10=if (freq==0 or L10==0 or L10>=HUGE_OPEN_L) then 0 else 1/(jw*L10) endif
+Inv_jwL11=if (freq==0 or L11==0 or L11>=HUGE_OPEN_L) then 0 else 1/(jw*L11) endif
+Inv_jwL12=if (freq==0 or L12==0 or L12>=HUGE_OPEN_L) then 0 else 1/(jw*L12) endif
+Inv_jwL13=if (freq==0 or L13==0 or L13>=HUGE_OPEN_L) then 0 else 1/(jw*L13) endif
+Inv_jwL14=if (freq==0 or L14==0 or L14>=HUGE_OPEN_L) then 0 else 1/(jw*L14) endif
+Inv_jwL15=if (freq==0 or L15==0 or L15>=HUGE_OPEN_L) then 0 else 1/(jw*L15) endif
+Inv_jwL16=if (freq==0 or L16==0 or L16>=HUGE_OPEN_L) then 0 else 1/(jw*L16) endif
+Inv_jwL17=if (freq==0 or L17==0 or L17>=HUGE_OPEN_L) then 0 else 1/(jw*L17) endif
+Inv_jwL18=if (freq==0 or L18==0 or L18>=HUGE_OPEN_L) then 0 else 1/(jw*L18) endif
+
+G04=if (M04==0 or M04>=HUGE_OPEN_R) then 0 else 1/M04 endif
+G05=if (M05==0 or M05>=HUGE_OPEN_R) then 0 else 1/M05 endif
+G06=if (M06==0 or M06>=HUGE_OPEN_R) then 0 else 1/M06 endif
+G07=if (M07==0 or M07>=HUGE_OPEN_R) then 0 else 1/M07 endif
+G08=if (M08==0 or M08>=HUGE_OPEN_R) then 0 else 1/M08 endif
+G09=if (M09==0 or M09>=HUGE_OPEN_R) then 0 else 1/M09 endif
+G10=if (M10==0 or M10>=HUGE_OPEN_R) then 0 else 1/M10 endif
+G11=if (M11==0 or M11>=HUGE_OPEN_R) then 0 else 1/M11 endif
+G12=if (M12==0 or M12>=HUGE_OPEN_R) then 0 else 1/M12 endif
+G13=if (M13==0 or M13>=HUGE_OPEN_R) then 0 else 1/M13 endif
+G14=if (M14==0 or M14>=HUGE_OPEN_R) then 0 else 1/M14 endif
+G15=if (M15==0 or M15>=HUGE_OPEN_R) then 0 else 1/M15 endif
+G16=if (M16==0 or M16>=HUGE_OPEN_R) then 0 else 1/M16 endif
+G17=if (M17==0 or M17>=HUGE_OPEN_R) then 0 else 1/M17 endif
+G18=if (M18==0 or M18>=HUGE_OPEN_R) then 0 else 1/M18 endif
+
+Y04=if (K04==0 and L04==0 and M04==0) or (K04>=HUGE_SHORT_C and L04<=TINY_SHORT_L and M04<=TINY_SHORT_R) then 0 else jwC04+Inv_jwL04+G04 endif
+Y05=if (K05==0 and L05==0 and M05==0) or (K05>=HUGE_SHORT_C and L05<=TINY_SHORT_L and M05<=TINY_SHORT_R) then 0 else jwC05+Inv_jwL05+G05 endif
+Y06=if (K06==0 and L06==0 and M06==0) or (K06>=HUGE_SHORT_C and L06<=TINY_SHORT_L and M06<=TINY_SHORT_R) then 0 else jwC06+Inv_jwL06+G06 endif
+Y07=if (K07==0 and L07==0 and M07==0) or (K07>=HUGE_SHORT_C and L07<=TINY_SHORT_L and M07<=TINY_SHORT_R) then 0 else jwC07+Inv_jwL07+G07 endif
+Y08=if (K08==0 and L08==0 and M08==0) or (K08>=HUGE_SHORT_C and L08<=TINY_SHORT_L and M08<=TINY_SHORT_R) then 0 else jwC08+Inv_jwL08+G08 endif
+Y09=if (K09==0 and L09==0 and M09==0) or (K09>=HUGE_SHORT_C and L09<=TINY_SHORT_L and M09<=TINY_SHORT_R) then 0 else jwC09+Inv_jwL09+G09 endif
+Y10=if (K10==0 and L10==0 and M10==0) or (K10>=HUGE_SHORT_C and L10<=TINY_SHORT_L and M10<=TINY_SHORT_R) then 0 else jwC10+Inv_jwL10+G10 endif
+Y11=if (K11==0 and L11==0 and M11==0) or (K11>=HUGE_SHORT_C and L11<=TINY_SHORT_L and M11<=TINY_SHORT_R) then 0 else jwC11+Inv_jwL11+G11 endif
+Y12=if (K12==0 and L12==0 and M12==0) or (K12>=HUGE_SHORT_C and L12<=TINY_SHORT_L and M12<=TINY_SHORT_R) then 0 else jwC12+Inv_jwL12+G12 endif
+Y13=if (K13==0 and L13==0 and M13==0) or (K13>=HUGE_SHORT_C and L13<=TINY_SHORT_L and M13<=TINY_SHORT_R) then 0 else jwC13+Inv_jwL13+G13 endif
+Y14=if (K14==0 and L14==0 and M14==0) or (K14>=HUGE_SHORT_C and L14<=TINY_SHORT_L and M14<=TINY_SHORT_R) then 0 else jwC14+Inv_jwL14+G14 endif
+Y15=if (K15==0 and L15==0 and M15==0) or (K15>=HUGE_SHORT_C and L15<=TINY_SHORT_L and M15<=TINY_SHORT_R) then 0 else jwC15+Inv_jwL15+G15 endif
+Y16=if (K16==0 and L16==0 and M16==0) or (K16>=HUGE_SHORT_C and L16<=TINY_SHORT_L and M16<=TINY_SHORT_R) then 0 else jwC16+Inv_jwL16+G16 endif
+Y17=if (K17==0 and L17==0 and M17==0) or (K17>=HUGE_SHORT_C and L17<=TINY_SHORT_L and M17<=TINY_SHORT_R) then 0 else jwC17+Inv_jwL17+G17 endif
+Y18=if (K18==0 and L18==0 and M18==0) or (K18>=HUGE_SHORT_C and L18<=TINY_SHORT_L and M18<=TINY_SHORT_R) then 0 else jwC18+Inv_jwL18+G18 endif
+
+Z01=if (K01==0 and M01==0) or (K01>=HUGE_SHORT_C and M01<=TINY_SHORT_R) then 0 else M01/(jw*K01*M01+1) endif
+Z02=if (L02<=TINY_SHORT_L) then 0 else jw*L02 endif
+Z03=if (M03<=TINY_SHORT_R) then 0 else M03 endif
+
+Z04=if (Y04==0) then 0 else 1/Y04 endif
+Z05=if (Y05==0) then 0 else 1/Y05 endif
+Z06=if (Y06==0) then 0 else 1/Y06 endif
+Z07=if (Y07==0) then 0 else 1/Y07 endif
+Z08=if (Y08==0) then 0 else 1/Y08 endif
+Z09=if (Y09==0) then 0 else 1/Y09 endif
+Z10=if (Y10==0) then 0 else 1/Y10 endif
+Z11=if (Y11==0) then 0 else 1/Y11 endif
+Z12=if (Y12==0) then 0 else 1/Y12 endif
+Z13=if (Y13==0) then 0 else 1/Y13 endif
+Z14=if (Y14==0) then 0 else 1/Y14 endif
+Z15=if (Y15==0) then 0 else 1/Y15 endif
+Z16=if (Y16==0) then 0 else 1/Y16 endif
+Z17=if (Y17==0) then 0 else 1/Y17 endif
+Z18=if (Y18==0) then 0 else 1/Y18 endif
+
+Z_Port:Z1P01 _net1 _net2 Z[1,1]=Z01+Z02+Z03+Z04+Z05+Z06+Z07+Z08+Z09+Z10+Z11+Z12+Z13+Z14+Z15+Z16+Z17+Z18
+
+end KR355
+
+;;model information (PartNumber:partName)
+;0 : KR355LD72J104KH01
+;1 : KR355LD72J154KH01
+;2 : KR355QD72J224KH01
+;3 : KR355LD72W224KH01
+;4 : KR355QD72J274KH01
+;5 : KR355LD72W334KH01
+;6 : KR355LD72E474KH01
+;7 : KR355WD72J474MH01
+;8 : KR355LD72W474KH01
+;9 : KR355WD72J564MH01
+;10 : KR355QD72W564KH01
+;11 : KR355LD72E684KH01
+;12 : KR355TD72W684MH01
+;13 : KR355QD72E105KH01
+;14 : KR355TD72W105MH01
+;15 : KR355WD72W125MH01
+;16 : KR355TD72E155MH01
+;17 : KR355WD72E225MH01
+

@@ -1,0 +1,299 @@
+;;****************************************************************************
+;; File:        LQP03TN_Z2.net
+;; Description: LQP03TN_Z2 model file
+;; Author:      Agilent Technologies Japan, Ltd.
+;; Created:     2019.06.11 17:48:22
+;; Language:    ADSsim
+;; (C) Copyright 2005, Agilent Technologies Japan, all rights reserved.
+;;****************************************************************************
+
+define LQP03TN_Z2 ( _net1  _net2 )
+parameters PartNumber=0
+
+#uselib "ckt" , "DAC"
+
+DAC:DAC1  File="$muRataLibWeb_CIRCUIT_MODEL_DIR/LQP03TN_Z2.dat" Type="dscr" InterpMode="index_lookup" InterpDom="ri" ExtrapMode="interpMode" iVar1="INDEX" iVal1=PartNumber
+
+K01=file{DAC1, "K01"}
+L01=file{DAC1, "L01"}
+M01=file{DAC1, "M01"}
+K02=file{DAC1, "K02"}
+L02=file{DAC1, "L02"}
+M02=file{DAC1, "M02"}
+K03=file{DAC1, "K03"}
+L03=file{DAC1, "L03"}
+M03=file{DAC1, "M03"}
+K04=file{DAC1, "K04"}
+L04=file{DAC1, "L04"}
+M04=file{DAC1, "M04"}
+K05=file{DAC1, "K05"}
+L05=file{DAC1, "L05"}
+M05=file{DAC1, "M05"}
+K06=file{DAC1, "K06"}
+L06=file{DAC1, "L06"}
+M06=file{DAC1, "M06"}
+K07=file{DAC1, "K07"}
+L07=file{DAC1, "L07"}
+M07=file{DAC1, "M07"}
+K08=file{DAC1, "K08"}
+L08=file{DAC1, "L08"}
+M08=file{DAC1, "M08"}
+K09=file{DAC1, "K09"}
+L09=file{DAC1, "L09"}
+M09=file{DAC1, "M09"}
+K10=file{DAC1, "K10"}
+L10=file{DAC1, "L10"}
+M10=file{DAC1, "M10"}
+K11=file{DAC1, "K11"}
+L11=file{DAC1, "L11"}
+M11=file{DAC1, "M11"}
+K12=file{DAC1, "K12"}
+L12=file{DAC1, "L12"}
+M12=file{DAC1, "M12"}
+K13=file{DAC1, "K13"}
+L13=file{DAC1, "L13"}
+M13=file{DAC1, "M13"}
+K14=file{DAC1, "K14"}
+L14=file{DAC1, "L14"}
+M14=file{DAC1, "M14"}
+K15=file{DAC1, "K15"}
+L15=file{DAC1, "L15"}
+M15=file{DAC1, "M15"}
+K16=file{DAC1, "K16"}
+L16=file{DAC1, "L16"}
+M16=file{DAC1, "M16"}
+
+jw=j*omega
+HUGE_OPEN_R=1E10
+HUGE_OPEN_L=1E10
+TINY_OPEN_C=1E-30
+TINY_SHORT_R=1E-10
+TINY_SHORT_L=1E-30
+HUGE_SHORT_C=1E10
+
+Inv_jwC04=if (freq==0 or K04==0 or K04>=HUGE_SHORT_C) then 0 else 1/(jw*K04) endif
+Inv_jwC05=if (freq==0 or K05==0 or K05>=HUGE_SHORT_C) then 0 else 1/(jw*K05) endif
+Inv_jwC06=if (freq==0 or K06==0 or K06>=HUGE_SHORT_C) then 0 else 1/(jw*K06) endif
+Inv_jwC07=if (freq==0 or K07==0 or K07>=HUGE_SHORT_C) then 0 else 1/(jw*K07) endif
+Inv_jwC08=if (freq==0 or K08==0 or K08>=HUGE_SHORT_C) then 0 else 1/(jw*K08) endif
+Inv_jwC09=if (freq==0 or K09==0 or K09>=HUGE_SHORT_C) then 0 else 1/(jw*K09) endif
+Inv_jwC10=if (freq==0 or K10==0 or K10>=HUGE_SHORT_C) then 0 else 1/(jw*K10) endif
+Inv_jwC11=if (freq==0 or K11==0 or K11>=HUGE_SHORT_C) then 0 else 1/(jw*K11) endif
+Inv_jwC12=if (freq==0 or K12==0 or K12>=HUGE_SHORT_C) then 0 else 1/(jw*K12) endif
+Inv_jwC13=if (freq==0 or K13==0 or K13>=HUGE_SHORT_C) then 0 else 1/(jw*K13) endif
+Inv_jwC14=if (freq==0 or K14==0 or K14>=HUGE_SHORT_C) then 0 else 1/(jw*K14) endif
+Inv_jwC15=if (freq==0 or K15==0 or K15>=HUGE_SHORT_C) then 0 else 1/(jw*K15) endif
+Inv_jwC16=if (freq==0 or K16==0 or K16>=HUGE_SHORT_C) then 0 else 1/(jw*K16) endif
+
+jwL04=if (L04<=TINY_SHORT_L) then 0 else jw*L04 endif
+jwL05=if (L05<=TINY_SHORT_L) then 0 else jw*L05 endif
+jwL06=if (L06<=TINY_SHORT_L) then 0 else jw*L06 endif
+jwL07=if (L07<=TINY_SHORT_L) then 0 else jw*L07 endif
+jwL08=if (L08<=TINY_SHORT_L) then 0 else jw*L08 endif
+jwL09=if (L09<=TINY_SHORT_L) then 0 else jw*L09 endif
+jwL10=if (L10<=TINY_SHORT_L) then 0 else jw*L10 endif
+jwL11=if (L11<=TINY_SHORT_L) then 0 else jw*L11 endif
+jwL12=if (L12<=TINY_SHORT_L) then 0 else jw*L12 endif
+jwL13=if (L13<=TINY_SHORT_L) then 0 else jw*L13 endif
+jwL14=if (L14<=TINY_SHORT_L) then 0 else jw*L14 endif
+jwL15=if (L15<=TINY_SHORT_L) then 0 else jw*L15 endif
+jwL16=if (L16<=TINY_SHORT_L) then 0 else jw*L16 endif
+
+R04=if (M04<=TINY_SHORT_R) then 0 else M04 endif
+R05=if (M05<=TINY_SHORT_R) then 0 else M05 endif
+R06=if (M06<=TINY_SHORT_R) then 0 else M06 endif
+R07=if (M07<=TINY_SHORT_R) then 0 else M07 endif
+R08=if (M08<=TINY_SHORT_R) then 0 else M08 endif
+R09=if (M09<=TINY_SHORT_R) then 0 else M09 endif
+R10=if (M10<=TINY_SHORT_R) then 0 else M10 endif
+R11=if (M11<=TINY_SHORT_R) then 0 else M11 endif
+R12=if (M12<=TINY_SHORT_R) then 0 else M12 endif
+R13=if (M13<=TINY_SHORT_R) then 0 else M13 endif
+R14=if (M14<=TINY_SHORT_R) then 0 else M14 endif
+R15=if (M15<=TINY_SHORT_R) then 0 else M15 endif
+R16=if (M16<=TINY_SHORT_R) then 0 else M16 endif
+
+Z04=if (K04==0 and L04==0 and M04==0) or (K04<=TINY_OPEN_C and L04>=HUGE_OPEN_L and M04>=HUGE_OPEN_R) then 0 else Inv_jwC04+jwL04+R04 endif
+Z05=if (K05==0 and L05==0 and M05==0) or (K05<=TINY_OPEN_C and L05>=HUGE_OPEN_L and M05>=HUGE_OPEN_R) then 0 else Inv_jwC05+jwL05+R05 endif
+Z06=if (K06==0 and L06==0 and M06==0) or (K06<=TINY_OPEN_C and L06>=HUGE_OPEN_L and M06>=HUGE_OPEN_R) then 0 else Inv_jwC06+jwL06+R06 endif
+Z07=if (K07==0 and L07==0 and M07==0) or (K07<=TINY_OPEN_C and L07>=HUGE_OPEN_L and M07>=HUGE_OPEN_R) then 0 else Inv_jwC07+jwL07+R07 endif
+Z08=if (K08==0 and L08==0 and M08==0) or (K08<=TINY_OPEN_C and L08>=HUGE_OPEN_L and M08>=HUGE_OPEN_R) then 0 else Inv_jwC08+jwL08+R08 endif
+Z09=if (K09==0 and L09==0 and M09==0) or (K09<=TINY_OPEN_C and L09>=HUGE_OPEN_L and M09>=HUGE_OPEN_R) then 0 else Inv_jwC09+jwL09+R09 endif
+Z10=if (K10==0 and L10==0 and M10==0) or (K10<=TINY_OPEN_C and L10>=HUGE_OPEN_L and M10>=HUGE_OPEN_R) then 0 else Inv_jwC10+jwL10+R10 endif
+Z11=if (K11==0 and L11==0 and M11==0) or (K11<=TINY_OPEN_C and L11>=HUGE_OPEN_L and M11>=HUGE_OPEN_R) then 0 else Inv_jwC11+jwL11+R11 endif
+Z12=if (K12==0 and L12==0 and M12==0) or (K12<=TINY_OPEN_C and L12>=HUGE_OPEN_L and M12>=HUGE_OPEN_R) then 0 else Inv_jwC12+jwL12+R12 endif
+Z13=if (K13==0 and L13==0 and M13==0) or (K13<=TINY_OPEN_C and L13>=HUGE_OPEN_L and M13>=HUGE_OPEN_R) then 0 else Inv_jwC13+jwL13+R13 endif
+Z14=if (K14==0 and L14==0 and M14==0) or (K14<=TINY_OPEN_C and L14>=HUGE_OPEN_L and M14>=HUGE_OPEN_R) then 0 else Inv_jwC14+jwL14+R14 endif
+Z15=if (K15==0 and L15==0 and M15==0) or (K15<=TINY_OPEN_C and L15>=HUGE_OPEN_L and M15>=HUGE_OPEN_R) then 0 else Inv_jwC15+jwL15+R15 endif
+Z16=if (K16==0 and L16==0 and M16==0) or (K16<=TINY_OPEN_C and L16>=HUGE_OPEN_L and M16>=HUGE_OPEN_R) then 0 else Inv_jwC16+jwL16+R16 endif
+
+Y01=if (K01<=1E-30) then 0 else jw*K01 endif
+Y02=if (L02==0 and M02==0) or (L02>=1E10) then 0 else 1/(jw*L02+M02) endif
+Y03=if (M03==0) or (M03>=1E10) then 0 else 1/(M03) endif
+
+Y04=if (Z04==0) then 0 else 1/Z04 endif
+Y05=if (Z05==0) then 0 else 1/Z05 endif
+Y06=if (Z06==0) then 0 else 1/Z06 endif
+Y07=if (Z07==0) then 0 else 1/Z07 endif
+Y08=if (Z08==0) then 0 else 1/Z08 endif
+Y09=if (Z09==0) then 0 else 1/Z09 endif
+Y10=if (Z10==0) then 0 else 1/Z10 endif
+Y11=if (Z11==0) then 0 else 1/Z11 endif
+Y12=if (Z12==0) then 0 else 1/Z12 endif
+Y13=if (Z13==0) then 0 else 1/Z13 endif
+Y14=if (Z14==0) then 0 else 1/Z14 endif
+Y15=if (Z15==0) then 0 else 1/Z15 endif
+Y16=if (Z16==0) then 0 else 1/Z16 endif
+
+Y_Port:Y1P1 _net1 _net2 Y[1,1]=Y01+Y02+Y03+Y04+Y05+Y06+Y07+Y08+Y09+Y10+Y11+Y12+Y13+Y14+Y15+Y16
+
+end LQP03TN_Z2
+
+;;model information (PartNumber:partName)
+;0 : LQP03TN0N6BZ2
+;1 : LQP03TN0N6CZ2
+;2 : LQP03TN0N7BZ2
+;3 : LQP03TN0N7CZ2
+;4 : LQP03TN0N8BZ2
+;5 : LQP03TN0N8CZ2
+;6 : LQP03TN0N9BZ2
+;7 : LQP03TN0N9CZ2
+;8 : LQP03TN1N0BZ2
+;9 : LQP03TN1N0CZ2
+;10 : LQP03TN1N1BZ2
+;11 : LQP03TN1N1CZ2
+;12 : LQP03TN1N2BZ2
+;13 : LQP03TN1N2CZ2
+;14 : LQP03TN1N3BZ2
+;15 : LQP03TN1N3CZ2
+;16 : LQP03TN1N4BZ2
+;17 : LQP03TN1N4CZ2
+;18 : LQP03TN1N5BZ2
+;19 : LQP03TN1N5CZ2
+;20 : LQP03TN1N6BZ2
+;21 : LQP03TN1N6CZ2
+;22 : LQP03TN1N7BZ2
+;23 : LQP03TN1N7CZ2
+;24 : LQP03TN1N8BZ2
+;25 : LQP03TN1N8CZ2
+;26 : LQP03TN1N9BZ2
+;27 : LQP03TN1N9CZ2
+;28 : LQP03TN2N0BZ2
+;29 : LQP03TN2N0CZ2
+;30 : LQP03TN2N1BZ2
+;31 : LQP03TN2N1CZ2
+;32 : LQP03TN2N2BZ2
+;33 : LQP03TN2N2CZ2
+;34 : LQP03TN2N3BZ2
+;35 : LQP03TN2N3CZ2
+;36 : LQP03TN2N4BZ2
+;37 : LQP03TN2N4CZ2
+;38 : LQP03TN2N5BZ2
+;39 : LQP03TN2N5CZ2
+;40 : LQP03TN2N6BZ2
+;41 : LQP03TN2N6CZ2
+;42 : LQP03TN2N7BZ2
+;43 : LQP03TN2N7CZ2
+;44 : LQP03TN2N8BZ2
+;45 : LQP03TN2N8CZ2
+;46 : LQP03TN2N9BZ2
+;47 : LQP03TN2N9CZ2
+;48 : LQP03TN3N0BZ2
+;49 : LQP03TN3N0CZ2
+;50 : LQP03TN3N1BZ2
+;51 : LQP03TN3N1CZ2
+;52 : LQP03TN3N2BZ2
+;53 : LQP03TN3N2CZ2
+;54 : LQP03TN3N3BZ2
+;55 : LQP03TN3N3CZ2
+;56 : LQP03TN3N4BZ2
+;57 : LQP03TN3N4CZ2
+;58 : LQP03TN3N5BZ2
+;59 : LQP03TN3N5CZ2
+;60 : LQP03TN3N6BZ2
+;61 : LQP03TN3N6CZ2
+;62 : LQP03TN3N7BZ2
+;63 : LQP03TN3N7CZ2
+;64 : LQP03TN3N8BZ2
+;65 : LQP03TN3N8CZ2
+;66 : LQP03TN3N9BZ2
+;67 : LQP03TN3N9CZ2
+;68 : LQP03TN4N0BZ2
+;69 : LQP03TN4N0CZ2
+;70 : LQP03TN4N1BZ2
+;71 : LQP03TN4N1CZ2
+;72 : LQP03TN4N2BZ2
+;73 : LQP03TN4N2CZ2
+;74 : LQP03TN4N3HZ2
+;75 : LQP03TN4N3JZ2
+;76 : LQP03TN4N7HZ2
+;77 : LQP03TN4N7JZ2
+;78 : LQP03TN5N1HZ2
+;79 : LQP03TN5N1JZ2
+;80 : LQP03TN5N6HZ2
+;81 : LQP03TN5N6JZ2
+;82 : LQP03TN6N2HZ2
+;83 : LQP03TN6N2JZ2
+;84 : LQP03TN6N8HZ2
+;85 : LQP03TN6N8JZ2
+;86 : LQP03TN7N5HZ2
+;87 : LQP03TN7N5JZ2
+;88 : LQP03TN8N2HZ2
+;89 : LQP03TN8N2JZ2
+;90 : LQP03TN9N1HZ2
+;91 : LQP03TN9N1JZ2
+;92 : LQP03TN10NHZ2
+;93 : LQP03TN10NJZ2
+;94 : LQP03TN11NHZ2
+;95 : LQP03TN11NJZ2
+;96 : LQP03TN12NHZ2
+;97 : LQP03TN12NJZ2
+;98 : LQP03TN13NHZ2
+;99 : LQP03TN13NJZ2
+;100 : LQP03TN15NHZ2
+;101 : LQP03TN15NJZ2
+;102 : LQP03TN16NHZ2
+;103 : LQP03TN16NJZ2
+;104 : LQP03TN18NHZ2
+;105 : LQP03TN18NJZ2
+;106 : LQP03TN20NHZ2
+;107 : LQP03TN20NJZ2
+;108 : LQP03TN22NHZ2
+;109 : LQP03TN22NJZ2
+;110 : LQP03TN24NHZ2
+;111 : LQP03TN24NJZ2
+;112 : LQP03TN27NHZ2
+;113 : LQP03TN27NJZ2
+;114 : LQP03TN30NHZ2
+;115 : LQP03TN30NJZ2
+;116 : LQP03TN33NHZ2
+;117 : LQP03TN33NJZ2
+;118 : LQP03TN36NHZ2
+;119 : LQP03TN36NJZ2
+;120 : LQP03TN39NHZ2
+;121 : LQP03TN39NJZ2
+;122 : LQP03TN43NHZ2
+;123 : LQP03TN43NJZ2
+;124 : LQP03TN47NHZ2
+;125 : LQP03TN47NJZ2
+;126 : LQP03TN51NHZ2
+;127 : LQP03TN51NJZ2
+;128 : LQP03TN56NHZ2
+;129 : LQP03TN56NJZ2
+;130 : LQP03TN62NHZ2
+;131 : LQP03TN62NJZ2
+;132 : LQP03TN68NHZ2
+;133 : LQP03TN68NJZ2
+;134 : LQP03TN75NHZ2
+;135 : LQP03TN75NJZ2
+;136 : LQP03TN82NHZ2
+;137 : LQP03TN82NJZ2
+;138 : LQP03TN91NHZ2
+;139 : LQP03TN91NJZ2
+;140 : LQP03TNR10HZ2
+;141 : LQP03TNR10JZ2
+;142 : LQP03TNR11HZ2
+;143 : LQP03TNR11JZ2
+;144 : LQP03TNR12HZ2
+;145 : LQP03TNR12JZ2
+

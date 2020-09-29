@@ -1,0 +1,31 @@
+de_define_palette_group(
+  /*  PALETTE DEFINITION */
+  SCHEM_WIN,              // Shematic window (SCHEM_WIN) or Layout window (LAYOUT_WIN)
+  "analogRF_net",         //dsnType
+  "Johanson Components",  //Name of Palette group
+  "Johanson Components",  //Descriptive label of palette group
+  -2,                     //-2: append at end, -1: append alphabetically sorted, <N>: append at N'th position
+
+  /* PALETTE ITEMS */
+  //item<n>name, item<n>label, item<n>bitmap
+  "CapJT", "CapJT", strcat(Johanson_lib_BITMAP_DIR,"Capacitor"),
+  "JTInd0603all", "JTInd0603all", strcat(Johanson_lib_BITMAP_DIR,"Inductor"),
+  "JTInd0603high", "JTInd0603high", strcat(Johanson_lib_BITMAP_DIR,"Inductor"),
+  "JTInd0603low", "JTInd0603low", strcat(Johanson_lib_BITMAP_DIR,"Inductor")
+);
+
+de_define_palette_group(
+  /*  PALETTE DEFINITION */
+  LAYOUT_WIN,              // Shematic window (SCHEM_WIN) or Layout window (LAYOUT_WIN)
+  "analogRF_net",         //dsnType
+  "Johanson Components",  //Name of Palette group
+  "Johanson Components",  //Descriptive label of palette group
+  -2,                     //-2: append at end, -1: append alphabetically sorted, <N>: append at N'th position
+
+  /* PALETTE ITEMS */
+  //item<n>name, item<n>label, item<n>bitmap
+  "CapJT", "CapJT", strcat(Johanson_lib_BITMAP_DIR,"Capacitor"),
+  "JTInd0603all", "JTInd0603all", strcat(Johanson_lib_BITMAP_DIR,"Inductor"),
+  "JTInd0603high", "JTInd0603high", strcat(Johanson_lib_BITMAP_DIR,"Inductor"),
+  "JTInd0603low", "JTInd0603low", strcat(Johanson_lib_BITMAP_DIR,"Inductor")
+);
