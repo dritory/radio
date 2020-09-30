@@ -17693,5 +17693,5 @@ SP Sweep1[1].Sweep2[21/21].SP1[279/279] <project_lib:FET_SP_NF_Match_Circ:schema
 
 
 Resource usage:
-  Total stopwatch time     =     8.62 seconds.
+  Total stopwatch time     =     2.29 seconds.
 
