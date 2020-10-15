@@ -6,11 +6,11 @@
 LockStakeVersion               1.1
 LoginName                      lolsk
 HostName                       DESKTOP-H16983N
-ProcessIdentifier              6772
-ProcessCreationTime_UTC        1601446174
-ProcessCreationTime_Readable   Wed Sep 30 08:09:34 2020 Vest-Europa (sommertid)
+ProcessIdentifier              4408
+ProcessCreationTime_UTC        1602699554
+ProcessCreationTime_Readable   Wed Oct 14 20:19:14 2020 Vest-Europa (sommertid)
 AppIdentifier                  OA File System Design Manager
 OSType                         win32
 ReasonForPlacingEditLock       OpenAccess edit lock
-FilePathUsedToEditLock         F:\Onedrive NTNU\OneDrive - NTNU\Radio\radio\project\project_lib\out_match\schematic\sch.oa.cdslck
-TimeEditLocked                 Wed Sep 30 12:21:58 2020 Vest-Europa (sommertid)
+FilePathUsedToEditLock         F:\Onedrive\OneDrive - NTNU\Radio\radio\project\project_lib\bias_circuit\layout\layout.oa.cdslck
+TimeEditLocked                 Wed Oct 14 21:18:21 2020 Vest-Europa (sommertid)

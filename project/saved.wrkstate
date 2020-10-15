@@ -1,10 +1,6 @@
 <!DOCTYPE SaveWorkspaceState>
 <SaveWorkspaceState>
     <Windows>
-        <Schematic width="1920" height="1017" y1="-8" cell="cell_1" x1="-8" view="schematic" lib="project_lib" geom="1,0,2,196,122,1536,832,1920,1080"/>
-        <Schematic width="1920" height="1017" y1="-8" cell="cell_2" x1="-1928" view="schematic" lib="project_lib" geom="1,1,2,343,397,1536,832,1920,1080"/>
-        <Schematic width="1920" height="1017" y1="-8" cell="cell_1" x1="-8" view="schematic" lib="project_lib" geom="1,0,2,62,85,1536,823,1920,1080"/>
-        <Schematic width="1920" height="1017" y1="-8" cell="FET_SP_NF_Match_Circ" x1="-8" view="schematic" lib="project_lib" geom="1,0,2,82,105,1536,823,1920,1080"/>
         <DDS name="SP_NF_GainMatchK.dds"/>
     </Windows>
     <MainWindowTab tab="1"/>

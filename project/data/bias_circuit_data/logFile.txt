@@ -1,0 +1,17 @@
+
+hpeesofsim (*) 510.shp Jul 22 2019, MINT version 5
+    (64-bit windows built: Mon Jul 22, 2019 22:53:59 +0000)
+
+Warning detected by hpeesofsim during netlist flattening.
+    Capacitor `C4.C9' is shorted.
+
+Warning detected by hpeesofsim during netlist flattening.
+    Capacitor `C1.C9' is shorted.
+
+
+SP SP1[1] <project_lib:bias_circuit:schematic>   freq=(1 Hz->10 GHz)
+
+
+Resource usage:
+  Total stopwatch time     =     0.88 seconds.
+
