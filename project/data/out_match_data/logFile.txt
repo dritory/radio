@@ -4,8 +4,17 @@ hpeesofsim (*) 510.shp Jul 22 2019, MINT version 5
 
 
 SP SP1[1] <project_lib:out_match:schematic>   freq=(1 GHz->3 GHz)
+Warning detected by hpeesofsim during SP analysis 'SP1'.
+    UserValue(0.001600) < MinRecommendValue(0.000100) OR UserValue > MaxRecommendValue(0.000635) for 'H' in `V1'
+
+Warning detected by hpeesofsim during SP analysis 'SP1'.
+    UserValue(0.001000) <= MinLegalValue(0.001100) for 'W' in `V1'
+
+Warning detected by hpeesofsim during SP analysis 'SP1'.
+    UserValue(0.656161) < MinRecommendValue(1.000000) OR UserValue > MaxRecommendValue(2.200000) for 'W/H' in `V1'
+
 
 
 Resource usage:
-  Total stopwatch time     =     0.70 seconds.
+  Total stopwatch time     =     0.54 seconds.
 

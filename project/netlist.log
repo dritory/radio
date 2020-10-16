@@ -1,27 +1,390 @@
-; Top Design: "project_lib:out_match:schematic"
+; Top Design: "project_lib:HB1TonePAE_Pswp:schematic"
 ; Netlisted using Hierarchy Policy: "Standard"
 
-Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="project_lib:out_match:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="project_lib:HB1TonePAE_Pswp:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+; Library Name: Johanson_lib
+; Cell Name: CapJT
+; View Name: schematic
+define CapJT ( P1  P2 ) 
+parameters  C=1.0 pF 
+C:C7  N__1 P2 C=0.937*C 
+L:L1  P1 N__1 L=(0.647*(C/(1pF))^-0.0414) nH R=3.74*(C/(1pF))^-0.195 Ohm Noise=yes  
+C:C10  P2 0 C=0.0317 pF 
+C:C9  P1 0 C=0.0317 pF 
+end CapJT
+
+; Library Name: project_lib
+; Cell Name: bias_circuit
+; View Name: schematic
+define bias_circuit ( bias  vdd ) 
+;parameters 
+MLIN2:TL3  N__6 bias Subst="MSub1"  W=W1 mm L=17.5 mm Wall1=0 mm Wall2=0 mm Mod=1 
 model MSub1 MSUB H=1.6 mm Er=4.4  Mur=1  Cond=5.96e7  Hu=1e+33 mm T=35 um TanD=0.02  Rough=0 mm DielectricLossModel=1 FreqForEpsrTanD=1.0 GHz LowFreqForTanD=1.0 kHz HighFreqForTanD=1.0 THz RoughnessModel=2 
+MGAP:Gap2  0 N__14 Subst="MSub1" W=2 mm S=1.5 mm 
+GRM18:C2  0 N__18 PartNumber=896 
+GRM31:C3  0 N__2 PartNumber=359 
+CapJT:C1  0 N__7 C=15pf 
+CapJT:C4  0 N__14 C=47pf 
+MGAP:Gap1  0 N__7 Subst="MSub1" W=2 mm S=1.5 mm 
+MRSTUB:Stub1  N__10 Subst="MSub1" Wi=W1 mm L=12 mm Angle=70 
+MTEE_ADS:Tee1  N__9 N__6 N__10 Subst="MSub1" W1=W1 mm W2=W1 mm W3=W1 mm 
+MLIN2:TL5  N__9 N__8 Subst="MSub1" W=W1 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MTEE_ADS:Tee2  N__5 N__8 N__7 Subst="MSub1" W1=W1 mm W2=W1 mm W3=W1 mm 
+MTEE_ADS:Tee3  N__19 N__3 N__14 Subst="MSub1" W1=W1 mm W2=W1 mm W3=W1 mm 
+MTEE_ADS:Tee4  N__16 N__20 N__18 Subst="MSub1" W1=W1 mm W2=W1 mm W3=W1 mm 
+MLIN2:TL6  N__5 N__3 Subst="MSub1" W=W1 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MLIN2:TL7  N__19 N__20 Subst="MSub1" W=W1 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MLIN2:TL8  N__16 N__15 Subst="MSub1" W=W1 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MTEE_ADS:Tee5  N__13 N__15 N__2 Subst="MSub1" W1=W1 mm W2=W1 mm W3=W1 mm 
+MLIN2:TL9  N__13 vdd Subst="MSub1" W=W1 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+
+;#@# autodisplay="S_Params_Quad_dB_Smith_Log"
+
+W1=2
+end bias_circuit
+
+; Library Name: project_lib
+; Cell Name: bias_circuit_gate
+; View Name: schematic
+define bias_circuit_gate ( bias  vdd ) 
+;parameters 
+MLIN2:TL3  N__6 bias Subst="MSub1"  W=W1 mm L=17.5 mm Wall1=0 mm Wall2=0 mm Mod=1 
+model MSub1 MSUB H=1.6 mm Er=4.4  Mur=1  Cond=5.96e7  Hu=1e+33 mm T=35 um TanD=0.02  Rough=0 mm DielectricLossModel=1 FreqForEpsrTanD=1.0 GHz LowFreqForTanD=1.0 kHz HighFreqForTanD=1.0 THz RoughnessModel=2 
+MGAP:Gap2  0 N__14 Subst="MSub1" W=2 mm S=1.5 mm 
+GRM31:C6  0 N__23 PartNumber=359 
+CapJT:C1  0 N__7 C=15pf 
+CapJT:C4  0 N__14 C=47pf 
+MGAP:Gap1  0 N__7 Subst="MSub1" W=2 mm S=1.5 mm 
+MRSTUB:Stub1  N__10 Subst="MSub1" Wi=W1 mm L=12 mm Angle=70 
+MTEE_ADS:Tee1  N__9 N__6 N__10 Subst="MSub1" W1=W1 mm W2=W1 mm W3=W1 mm 
+MLIN2:TL5  N__9 N__8 Subst="MSub1" W=W1 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MTEE_ADS:Tee2  N__5 N__8 N__7 Subst="MSub1" W1=W1 mm W2=W1 mm W3=W1 mm 
+MTEE_ADS:Tee3  N__19 N__3 N__14 Subst="MSub1" W1=W1 mm W2=W1 mm W3=W1 mm 
+MTEE_ADS:Tee4  N__16 N__20 N__2 Subst="MSub1" W1=W1 mm W2=W1 mm W3=W1 mm 
+MLIN2:TL6  N__5 N__3 Subst="MSub1" W=W1 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MLIN2:TL7  N__19 N__20 Subst="MSub1" W=W1 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MLIN2:TL8  N__16 N__15 Subst="MSub1" W=W1 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MTEE_ADS:Tee5  N__13 N__15 N__23 Subst="MSub1" W1=W1 mm W2=W1 mm W3=W1 mm 
+MLIN2:TL9  N__13 vdd Subst="MSub1" W=W1 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+
+;#@# autodisplay="S_Params_Quad_dB_Smith_Log"
+
+W1=2
+GRM18:C5  0 N__2 PartNumber=896 
+end bias_circuit_gate
+
+; Library Name: project_lib
+; Cell Name: in_match
+; View Name: schematic
+define in_match ( in  out ) 
+;parameters 
+model MSub1 MSUB H=1.6 mm Er=4.4  Mur=1  Cond=5.96e7  Hu=1e+33 mm T=35 um TanD=0.02  Rough=0 mm DielectricLossModel=1 FreqForEpsrTanD=1.0 GHz LowFreqForTanD=1.0 kHz HighFreqForTanD=1.0 THz RoughnessModel=2 
+MTEE_ADS:Tee1  N__6 out N__8 Subst="MSub1" W1=3 mm W2=3 mm W3=3 mm 
+MTAPER:Taper1  N__6 N__14 Subst="MSub1" W1=3 mm W2=0.35 mm L=2mm 
+MLOC2:TL12  N__8 Subst="MSub1" W=3 mm L=4.9 mm tune{ 0 mm to 7 mm by 0.1 mm } Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MTAPER:Taper2  in N__13 Subst="MSub1" W1=3 mm W2=0.35 mm L=2mm 
+MLIN2:TL22  N__15 N__13 Subst="MSub1" W=W L=L2 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MLIN2:TL16  N__14 N__10 Subst="MSub1" W=W L=L2 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MCURVE:Curve3  N__7 N__11 Subst="MSub1" W=W Angle=Angle Radius=Radius 
+MCURVE:Curve2  N__11 N__9 Subst="MSub1" W=W Angle=Angle Radius=Radius 
+MCURVE:Curve4  N__12 N__10 Subst="MSub1" W=W Angle=Angle Radius=Radius 
+MCURVE:Curve1  N__15 N__0 Subst="MSub1" W=W Angle=Angle Radius=Radius 
+
+Radius=(Length - 4*L2)/(2 *3.1415)
+L2=2mm
+W=0.32mm
+Angle=90
+Length=14.63 mm tune{ 10 mm to 18 mm by 0.1 mm }
+MCLIN:CLin1  N__0 N__12 N__7 N__9 Subst="MSub1" W=W S=Radius*2 - W L=L2 
+end in_match
+
+; Library Name: project_lib
+; Cell Name: out_match
+; View Name: schematic
+define out_match ( in  out ) 
+;parameters 
+model MSub1 MSUB H=1.6 mm Er=4.4  Mur=1  Cond=5.96e7  Hu=1e+33 mm T=35 um TanD=0.02  Rough=0 mm DielectricLossModel=1 FreqForEpsrTanD=1.0 GHz LowFreqForTanD=1.0 kHz HighFreqForTanD=1.0 THz RoughnessModel=2 
+MLIN2:TL9  N__22 N__13 Subst="MSub1" W=3 mm L=7.5 mm tune{ 7 mm to 10 mm by 0.2 mm } Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
 
 ;#@# autodisplay="S_Params_Quad_dB_Smith"
-MLOC2:TL13  N__0 Subst="MSub1" W=3 mm L=10.62 mm tune{ 5 mm to 11 mm by 0.1 mm } Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
-MTEE_ADS:Tee1  N__7 out N__0 Subst="MSub1" W1=3 mm W2=3 mm W3=3 mm 
 
-Radius=(Length - 4*L2)/(4 *3.1415)
+Radius=(Length - 4*L2)/(2 *3.1415)
 L2=2mm
-W=3mm
+W=0.58mm
 Angle=90
-Length=32.2mm
-MCURVE:Curve1  in N__17 Subst="MSub1" W=W Angle=Angle Radius=Radius 
-MCURVE:Curve8  N__19 N__7 Subst="MSub1" W=W Angle=Angle Radius=Radius 
-MCURVE:Curve5  N__9 N__18 Subst="MSub1" W=W Angle=Angle Radius=Radius 
-MCURVE:Curve4  N__12 N__9 Subst="MSub1" W=W Angle=Angle Radius=Radius 
-MCURVE:Curve2  N__11 N__16 Subst="MSub1" W=W Angle=Angle Radius=Radius 
-MCURVE:Curve7  N__14 N__6 Subst="MSub1" W=W Angle=Angle Radius=Radius 
-MCURVE:Curve6  N__6 N__5 Subst="MSub1" W=W Angle=Angle Radius=Radius 
-MCURVE:Curve3  N__10 N__11 Subst="MSub1" W=W Angle=Angle Radius=Radius 
-MLIN2:TL17  N__14 N__19 Subst="MSub1" W=W L=L2 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
-MLIN2:TL16  N__5 N__18 Subst="MSub1" W=W L=L2 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
-MLIN2:TL15  N__10 N__12 Subst="MSub1" W=W L=L2 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
-MLIN2:TL14  N__16 N__17 Subst="MSub1" W=W L=L2 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+Length=18.2mm
+MTAPER:Taper1  N__13 N__5 Subst="MSub1" W1=3 mm W2=0.58 mm L=2 mm 
+MTAPER:Taper2  out N__12 Subst="MSub1" W1=3 mm W2=0.58 mm L=2 mm 
+MLIN2:TL21  N__8 N__7 Subst="MSub1" W=W2 L=L0 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MTEE_ADS:Tee1  in N__22 N__8 Subst="MSub1" W1=3 mm W2=3 mm W3=3 mm 
+VIA2:V1  N__6 0 D=1.1 mm H=1.4 mm T=0.15 mm Rho=1.0 W=2 mm 
+MLIN2:TL16  N__12 N__11 Subst="MSub1" W=W L=L2 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MCURVE:Curve4  N__19 N__11 Subst="MSub1" W=W Angle=Angle Radius=Radius 
+MCURVE:Curve3  N__9 N__16 Subst="MSub1" W=W Angle=Angle Radius=Radius 
+MCURVE:Curve2  N__16 N__17 Subst="MSub1" W=W Angle=Angle Radius=Radius 
+MCURVE:Curve1  N__4 N__10 Subst="MSub1" W=W Angle=Angle Radius=Radius 
+MLIN2:TL22  N__4 N__5 Subst="MSub1" W=W L=L2 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MCLIN:CLin1  N__10 N__19 N__9 N__17 Subst="MSub1" W=W S=Radius*2 - W L=L2 
+MLIN2:TL23  N__14 N__6 Subst="MSub1" W=W2 L=L1 Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+
+Radius2=(Length2 - L1 - L0)*2/(3.1415)
+L1=9mm
+W2=3mm
+Length2=14.9mm tune{ 10 mm to 17 mm logScale }
+L0=3mm
+MCURVE:Curve5  N__7 N__14 Subst="MSub1" W=W2 Angle=Angle Radius=Radius2 
+end out_match
+
+; Library Name: project_lib
+; Cell Name: amplifier
+; View Name: schematic
+define amplifier ( vin  vout  vgate  vdrain ) 
+;parameters 
+#uselib "CG2H40010F" , "Packaged_lib_CG2H40010F_schematic"
+"Packaged_lib_CG2H40010F_schematic":X1  N__17 N__13 0 RTH=8.0 TBASE=25 VDN=28 
+bias_circuit:X2  N__22 vdrain 
+bias_circuit_gate:X3  N__5 vgate 
+R:R1  N__10 N__15 R=10 Ohm tune{ 1 Ohm to 50 Ohm by 1 Ohm } Noise=yes 
+CapJT:Kap1  N__10 N__15 C=12 pF tune{ 1 pF to 87 pF by 1 pF } 
+CapJT:Kap2  N__6 N__23 C=10 pF tune{ 1 pF to 30 pF by 1 pF } 
+CapJT:Kap3  N__1 N__20 C=10 pF tune{ 1 pF to 30 pF by 1 pF } 
+MLIN2:TL1  N__15 N__17 Subst="MSub1" W=2 mm L=3 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+R:R2  N__5 N__18 R=10 Ohm tune{ 1 Ohm to 50 Ohm by 1 Ohm } Noise=yes 
+MLIN2:TL2  N__13 N__14 Subst="MSub1" W=2 mm L=3 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MTEE_ADS:Tee1  N__12 N__14 N__22 Subst="MSub1" W1=2 mm W2=2 mm W3=2 mm 
+MTEE_ADS:Tee2  N__10 N__19 N__18 Subst="MSub1" W1=2 mm W2=3 mm W3=3 mm 
+MGAP:Gap4  N__1 N__20 Subst="MSub1" W=2 mm S=0.5 mm 
+MGAP:Gap5  N__5 N__18 Subst="MSub1" W=2 mm S=0.5 mm 
+model MSub1 MSUB H=1.6 mm Er=4.4  Mur=1  Cond=5.96e7  Hu=1e+33 mm T=35 um TanD=0.02  Rough=0 mm DielectricLossModel=1 FreqForEpsrTanD=1.0 GHz LowFreqForTanD=1.0 kHz HighFreqForTanD=1.0 THz RoughnessModel=2 
+MTAPER:Taper1  N__8 N__6 Subst="MSub1" W1=3 mm W2=2 mm L=1 mm 
+MGAP:Gap2  N__10 N__15 Subst="MSub1" W=2 mm S=0.5 mm 
+MGAP:Gap3  N__6 N__23 Subst="MSub1" W=2 mm S=0.5 mm 
+MTAPER:Taper4  N__19 N__23 Subst="MSub1" W1=3 mm W2=2 mm L=1 mm 
+MTAPER:Taper3  N__21 N__20 Subst="MSub1" W1=3 mm W2=2 mm L=1 mm 
+in_match:X4  vin N__8 
+MLIN2:TL3  N__12 N__1 Subst="MSub1" W=2 mm L=1 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MGAP:Gap1  N__17 N__13 Subst="MSub1" W=3 mm S=4.1 mm 
+out_match:X5  N__21 vout 
+
+#ifndef muRataLibWeb
+#define muRataLibWeb
+; models
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/ZRB18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/ZRB15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/ZRA21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW2UAS_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW2BAS_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW2BAN_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW21HN_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW18CN_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW18CA_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW18AN_8Z.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW18AN_80.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW18AN_1Z.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW18AN_10.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW18AN_0Z.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW18AN_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15CN_1Z.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15CN_10.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15CN_0Z.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15CN_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15CA_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15AW_80.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15AN_8Z.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15AN_80.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15AN_1Z.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15AN_10.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15AN_0Z.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW15AN_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW04CA_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW04AN_10.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW04AN_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQW03AW_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQP15MN_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQP03TQ_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQP03TN_Z2.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQP03TN_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQP03TG_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQP03PN_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQP03HQ_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQP02TQ_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQP02TN_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQP02HQ_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQG18HN_00.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQG15WZ_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQG15WH_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQG15HZ_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQG15HS_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQG15HN_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LQG15HH_02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LLR18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LLL31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LLL21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LLL1U.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LLL18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/LLL15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/KRM55.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/KRM31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/KRM21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/KR355.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/KCM55.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/KCA55.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/KC355.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GXT32.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GXT31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GXT21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GXT18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GXT15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GXM32.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GXM31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GXM21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GXM18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GXM15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRT32.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRT31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRT21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRT18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRT15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRT03.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRMMD.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM55.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM43.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM42.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM32.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM03.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRM01.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRJ55.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRJ43.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRJ32.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRJ31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRJ21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRJ18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GRJ15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR731.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR721.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR455.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR443.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR442.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR432.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR431.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR355.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR343.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR332.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR331.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GR321.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GQM22.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GQM21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GQM18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GQM15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GJM15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GJM03.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GJM02.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GJ832.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GJ831.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GJ821.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GJ431.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GGM32.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GGM31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GGM21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GGM18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GGM15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GGD21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GGD18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCQ15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCM55.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCM43.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCM32.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCM31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCM21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCM18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCM15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCM03.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCJ55.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCJ43.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCJ32.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCJ31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCJ21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCJ18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCH32.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCH31.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCH21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCH18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCH15.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCE21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCE18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCD21.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GCD18.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GC355.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GC343.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GC332.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GC331.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GC321.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GA355.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GA352.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GA343.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GA342.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GA255.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GA243.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/GA242.net"
+#include "F:/Onedrive/OneDrive - NTNU/Radio/radio/project/Murata/circuit/models/encode.net"
+#endif
+
+
+end amplifier
+
+HB:HB1 MaxOrder=4 Freq[1]=RFfreq Order[1]=5 StatusLevel=2 FundOversample=1 \
+Restart=no OutputBudgetIV=no UseOutFile=no \
+HBSS_WSP=0 UseInFile=no SS_Freq=1.0 kHz SweepVar="RFpower" SweepPlan="Sweep1" OutputPlan="HB1_Output" 
+
+OutputPlan:HB1_Output \
+      Type="Output" \
+      UseNodeNestLevel=yes \
+      NodeNestLevel=2 \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      EquationName[1]="Zload" \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2 \
+      UseDeviceCurrentNestLevel=no \
+      DeviceCurrentNestLevel=0 \
+      DeviceCurrentDeviceType="All" \
+      DeviceCurrentSymSyntax=yes \
+      UseCurrentNestLevel=yes \
+      CurrentNestLevel=999 \
+      UseDeviceVoltageNestLevel=no \
+      DeviceVoltageNestLevel=0 \
+      DeviceVoltageDeviceType="All"
+
+Tran:HB1_tran HB_Sol=1 SteadyState=1 StatusLevel=3 \
+Freq[1]=RFfreq Order[1]=5 
+
+Component:tahb_HB1 Module="ATAHB" Type="ModelExtractor" \ 
+ Tran_Analysis="HB1_tran" HB_Analysis="HB1" 
+
+Port:Term1  Vload 0 Num=2 Z=Zload Noise=yes 
+Short:Iload  N__11 Vload Mode=0 SaveCurrent=yes 
+Short:Is_high  Vs_high N__14 Mode=0 SaveCurrent=yes 
+V_Source:G3  Vs_high 0 Type="V_DC" Vdc=Vhigh SaveCurrent=1 
+Port:PORT1  N__9 0 Num=1 Z=50 Ohm P[1]=dbmtow(RFpower) Freq[1]=RFfreq    Noise=yes 
+Short:I_input  N__9 Vinput Mode=0 SaveCurrent=yes 
+Short:Is_low  Vs_low N__12 Mode=0 SaveCurrent=yes 
+V_Source:SRC2  Vs_low 0 Type="V_DC" Vdc=Vlow SaveCurrent=1 
+
+
+SweepPlan:Sweep1 SweepPlan[1]="Sweep1_seg1" \ 
+SweepPlan[2]="Sweep1_seg2" 
+SweepPlan:Sweep1_seg1 Start=0 Stop=10 Step=2.5 
+SweepPlan:Sweep1_seg2 Start=11 Stop=30 Step=1 
+
+RFfreq=2.4 GHz
+Zload=50
+Vhigh=28 V
+Vlow=-2.5 V
+RFpower=10
+aele Pdel_W=0.5*real(Vload[1]*conj(Iload.i[1]));Pdel_dBm=10*log(Pdel_W)+30;Pdc=real(Vs_high[0]*Is_high.i[0]+Vs_low[0]*Is_low.i[0]);P_In_Watts=0.5*real(Vinput[1]*conj(I_input.i[1]));PAE=max2(100*(Pdel_W-P_In_Watts)/Pdc,0);Gain_Transducer=Pdel_dBm-RFpower;
+amplifier:X1  Vinput N__11 N__12 N__14 

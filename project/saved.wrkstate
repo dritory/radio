@@ -1,7 +1,7 @@
 <!DOCTYPE SaveWorkspaceState>
 <SaveWorkspaceState>
     <Windows>
-        <DDS name="SP_NF_GainMatchK.dds"/>
+        <Schematic x1="-8" lib="project_lib" cell="amplifier" height="1017" y1="-8" geom="1,0,2,259,255,1536,823,1920,1080" view="schematic" width="1920"/>
     </Windows>
     <MainWindowTab tab="1"/>
 </SaveWorkspaceState>

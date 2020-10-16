@@ -32,5 +32,5 @@ Warning detected by hpeesofsim during circuit set up.
         vdi
 
 Resource usage:
-  Total stopwatch time     =     1.23 seconds.
+  Total stopwatch time     =     1.51 seconds.
 
